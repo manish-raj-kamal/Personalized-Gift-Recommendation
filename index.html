@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gift Recommendations</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background: rgb(255, 255, 255);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background: transparent;
+        }
+
+        .welcome-section {
+            background-image: url(https://cdn.pixabay.com/photo/2016/05/28/00/06/gift-1420830_1280.jpg);
+            background-position: center;
+            background-size: cover;
+            margin-top: 20px;
+            height: 180px;
+            border: 0;
+            font-family: 'Copperplate', 'Copperplate Gothic Light', 'fantasy';
+            border-radius: 15px;
+            padding: 60px;
+            color: white;
+            text-align: left;
+        }
+
+        .welcome-section-text {
+            max-width: 360px;
+        }
+
+        .optional {
+            background: greenyellow;
+            margin-top: 22px;
+            padding-top: 30px;
+            padding-bottom: 70px;
+            text-align: center;
+            border: 0;
+            border-radius: 15px;
+        }
+
+        .navbar {
+            padding: 0 10px;
+            background-color: white;
+            overflow: hidden;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 80px;
+            cursor: pointer;
+        }
+
+        .logo2 {
+            width: 140px;
+        }
+
+        .menu-icon {
+            width: 30px;
+            cursor: pointer;
+            margin-left: 40px;
+        }
+
+        nav {
+            flex: 1;
+            text-align: right;
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline-block;
+            margin-left: 60px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+            font-size: 13px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        nav ul li a:hover {
+            color: #76b600;
+            border: 1.5px solid #0e264a;
+        }
+
+        #recommendation {
+            text-align: center;
+            background: rgb(255, 255, 255);
+            padding: 1px 1px;
+            margin: 5px auto 0px auto;
+            width: fit-content;
+            min-width: 325px;
+            max-width: 500px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            border: 0;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- **************************************************************************************************************************** -->
+    <div class="container">
+        <div class="navbar">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/016/329/811/small/3d-illustration-gift-box-new-year-png.png"
+                class="logo">
+            <a href="index.html"><img src="image/Logo.png" class="logo logo2"></a>
+            <!-- <h1
+                style="font-size: 45px; line-height: 40px; color: #a6ff00; margin:0px auto 0; text-align:left; padding:15px; font-family:Monospace; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">
+                Personalized Gifts</h1> -->
+            <nav>
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="shop.html">SHOP</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                </ul>
+            </nav>
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/010/794/629/small_2x/list-menu-3d-icon-png.png"
+                class="menu-icon">
+        </div>
+        <hr>
+
+        <div class="welcome-section">
+            <div class="welcome-section-text">
+                <h1>Welcome to Gift Recommendations</h1>
+                <br>
+                <p>Find the perfect gift for any occasion!</p>
+            </div>
+        </div>
+
+        <div class="optional" style="text-align: center;">
+            <h1>Gift Recommendations</h1>
+
+            <h2>Select Price Range and Category</h2>
+            <form>
+                <label for="occasion">Occasion:</label>
+                <select id="occasion" name="occasion">
+                    <option value="birthday">Birthday</option>
+                    <option value="anniversary">Anniversary</option>
+                    <option value="wedding">Wedding</option>
+                </select>
+
+                <label for="price-range">Price Range:</label>
+                <select id="price-range" name="price-range">
+                    <option value="low">Low</option>
+                    <!-- <option value="medium">Medium</option> -->
+                    <option value="high">High</option>
+                </select>
+                <br>
+                <label for="gender">Gender:</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+                <br>
+                <label for="ideal-for">Ideal For:</label>
+                <input type="checkbox" id="kids" name="ideal-for" value="kids">
+                <label for="kids">Kids</label>
+                <input type="checkbox" id="adults" name="ideal-for" value="adults">
+                <label for="adults">Adults</label>
+                <input type="checkbox" id="olders" name="ideal-for" value="olders">
+                <label for="olders">Olders</label>
+                <br>
+                <input type="submit" value="Recommend">
+            </form>
+
+            <div id="recommendation">
+                <h4>Tap recommend to view recommended gift</h4>
+                <script>
+
+                    const form = document.querySelector('form');
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                        const occasion = document.querySelector('#occasion').value;
+                        const priceRange = document.querySelector('#price-range').value;
+                        const gender = document.querySelector('input[name="gender"]:checked').value;
+                        const idealFor = Array.from(document.querySelectorAll('input[name="ideal-for"]:checked')).map(input => input.value);
+
+                        // Recommendation logic
+                        let recommendation = '';
+                        //  Combination Birthday
+                        if (occasion === 'birthday' && priceRange === 'low' && gender === 'male' && idealFor.includes('kids')) {
+                            recommendation = 'Recommended gift: Toy car';
+                        } else if (occasion === 'birthday' && priceRange === 'low' && gender === 'male' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Book';
+                        } else if (occasion === 'birthday' && priceRange === 'low' && gender === 'male' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Wallet';
+                        } else if (occasion === 'birthday' && priceRange === 'low' && gender === 'female' && idealFor.includes('kids')) {
+                            recommendation = 'Recommended gift: Doll';
+                        } else if (occasion === 'birthday' && priceRange === 'low' && gender === 'female' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Perfume';
+                        } else if (occasion === 'birthday' && priceRange === 'low' && gender === 'female' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Scarf';
+                        } else if (occasion === 'birthday' && priceRange === 'low' && gender === 'other' && idealFor.includes('kids')) {
+                            recommendation = 'Recommended gift: Puzzle';
+                        } else if (occasion === 'birthday' && priceRange === 'low' && gender === 'other' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Coffee mug';
+                        } else if (occasion === 'birthday' && priceRange === 'low' && gender === 'other' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Watch';
+                        }
+                        // Combinations Anniversary
+
+                        else if (occasion === 'anniversary' && priceRange === 'low' && gender === 'male' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Personalized photo frame';
+                        } else if (occasion === 'anniversary' && priceRange === 'low' && gender === 'male' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Engraved watch';
+                        }
+                        else if (occasion === 'anniversary' && priceRange === 'low' && gender === 'female' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Spa voucher';
+                        } else if (occasion === 'anniversary' && priceRange === 'low' && gender === 'female' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Framed artwork with heartfelt message';
+                        }
+                        else if (occasion === 'anniversary' && priceRange === 'low' && gender === 'other' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Customized keychain';
+                        } else if (occasion === 'anniversary' && priceRange === 'low' && gender === 'other' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Personalized wall clock';
+                        }
+                        // Combinations Wedding
+
+                        else if (occasion === 'wedding' && priceRange === 'low' && gender === 'male' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Personalized Coffee mug';
+                        } else if (occasion === 'wedding' && priceRange === 'low' && gender === 'male' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Personalized photo album';
+                        }
+                        else if (occasion === 'wedding' && priceRange === 'low' && gender === 'female' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Dinnerware set';
+                        } else if (occasion === 'wedding' && priceRange === 'low' && gender === 'female' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Bedding set';
+                        }
+                        else if (occasion === 'wedding' && priceRange === 'low' && gender === 'other' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Home decor items';
+                        } else if (occasion === 'wedding' && priceRange === 'low' && gender === 'other' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Personalized luggage';
+                        }
+                        // Combinations Birthday (High)
+
+                        else if (occasion === 'birthday' && priceRange === 'high' && gender === 'male' && idealFor.includes('kids')) {
+                            recommendation = 'Recommended gift: Remote control car';
+                        } else if (occasion === 'birthday' && priceRange === 'high' && gender === 'male' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Smartwatch';
+                        } else if (occasion === 'birthday' && priceRange === 'high' && gender === 'male' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Leather wallet';
+                        } else if (occasion === 'birthday' && priceRange === 'high' && gender === 'female' && idealFor.includes('kids')) {
+                            recommendation = 'Recommended gift: Art set';
+                        } else if (occasion === 'birthday' && priceRange === 'high' && gender === 'female' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Handbag';
+                        } else if (occasion === 'birthday' && priceRange === 'high' && gender === 'female' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Silk scarf';
+                        } else if (occasion === 'birthday' && priceRange === 'high' && gender === 'other' && idealFor.includes('kids')) {
+                            recommendation = 'Recommended gift: Lego set';
+                        } else if (occasion === 'birthday' && priceRange === 'high' && gender === 'other' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Bluetooth speaker';
+                        } else if (occasion === 'birthday' && priceRange === 'high' && gender === 'other' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Leather watch';
+                        }
+                        // Combinations Anniversary (High)
+
+                        else if (occasion === 'anniversary' && priceRange === 'high' && gender === 'male' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Designer perfume';
+                        } else if (occasion === 'anniversary' && priceRange === 'high' && gender === 'male' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Luxury watch';
+                        }
+                        else if (occasion === 'anniversary' && priceRange === 'high' && gender === 'female' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Personalized jewelry';
+                        } else if (occasion === 'anniversary' && priceRange === 'high' && gender === 'female' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Personalized jewelry';
+                        }
+                        else if (occasion === 'anniversary' && priceRange === 'high' && gender === 'other' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Fitness tracker';
+                        } else if (occasion === 'anniversary' && priceRange === 'high' && gender === 'other' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Personalized wall art';
+                        }
+                        // Combinations Wedding (High)
+
+                        else if (occasion === 'wedding' && priceRange === 'high' && gender === 'male' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Luxury pen set';
+                        } else if (occasion === 'wedding' && priceRange === 'high' && gender === 'male' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Personalized photo book';
+                        }
+                        else if (occasion === 'wedding' && priceRange === 'high' && gender === 'female' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Luxury candle set';
+                        } else if (occasion === 'wedding' && priceRange === 'high' && gender === 'female' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Personalized bedding';
+                        }
+                        else if (occasion === 'wedding' && priceRange === 'high' && gender === 'other' && idealFor.includes('adults')) {
+                            recommendation = 'Recommended gift: Smart home devices';
+                        } else if (occasion === 'wedding' && priceRange === 'high' && gender === 'other' && idealFor.includes('olders')) {
+                            recommendation = 'Recommended gift: Personalized luggage set';
+                        }
+                        // All combinations
+
+                        else {
+                            recommendation = 'Selected combinations is illegal 😊';
+                        }
+
+                        document.getElementById('recommendation').textContent = recommendation;
+                    });
+                </script>
+            </div>
+        </div>
+</body>
+
+</html>

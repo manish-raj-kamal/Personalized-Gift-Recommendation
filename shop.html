@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <style>
+        body {
+            background: #a6ff00;
+            
+        }
+
+        .navbar {
+            border: 0;
+            border-radius: 5px;
+            margin-top: 5px;
+            padding: 0 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px #5c5b5d;
+            overflow: hidden;
+            height: 65px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 70px;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            width: 30px;
+            cursor: pointer;
+            margin-left: 40px;
+        }
+
+        nav {
+            flex: 1;
+            text-align: right;
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline-block;
+            margin-left: 60px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+            font-size: 13px;
+            font-family: 'Roboto', sans-serif;
+            transition: transform 0.5s;
+        }
+
+        nav ul li a:hover {
+            color: #486e00;
+            border: 1.5px solid #0e264a;
+            transform: translateY(-5px);
+        }
+
+        .container {
+            padding: 0 20px;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        header .shopping {
+            position: relative;
+            text-align: right;
+        }
+
+        header .shopping img {
+            width: 40px;
+        }
+
+        header .shopping span {
+            background: red;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: absolute;
+            top: -5px;
+            left: 80%;
+            padding: 0px 10px;
+        }
+
+        .list_container {
+            padding: 20px 50px 20px 50px;
+            /* background-color:transparent; */
+            margin-top: 28px;
+            border: 0px solid #ffffff;
+            border-radius: 15px;
+            background: url(image/Shop_back.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* background-color: #ffffff; */
+
+        }
+
+        .list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 20px;
+            row-gap: 20px;
+            margin-top: 20px;
+        }
+
+        .list .item:hover {
+            transform: translateY(-10px);
+        }
+
+        .list .item {
+            text-align: center;
+            background-color: #DCE0E1;
+            padding: 40px 0px;
+            margin: 15px;
+            box-shadow: 0 20px 30px #a6ff00;
+            letter-spacing: 1px;
+            border: 0;
+            border-radius: 10px;
+            transition: transform 0.5s;
+        }
+
+        .list .item img {
+            width: fit-content;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .list .item .title {
+            font-weight: 600;
+        }
+
+        .list .item .price {
+            margin: 10px;
+        }
+
+        .list .item button {
+            background-color: #d000ff;
+            color: #fff;
+            width: 100%;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .card {
+            position: fixed;
+            top: 1%;
+            left: 100%;
+            width: 450px;
+            background-color: #ffffff;
+            height: 70vh;
+            transition: 0.5s;
+            border: .5px solid #000000;
+        }
+
+        .active .card {
+            left: calc(100% - 500px);
+        }
+
+        .active .container {
+            transform: translateX(-200px);
+        }
+
+        .card h1 {
+            color: #dae80e;
+            font-weight: 100;
+            margin: 0;
+            padding: 0 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card .checkOut {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        .card .checkOut div {
+            background-color: #E8BC0E;
+            width: 90%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 0;
+            border-radius: 10px;
+            margin: 13px;
+        }
+
+        .card .checkOut div:nth-child(2) {
+            background-color: #7f8ca5;
+            color: #000000;
+            cursor: pointer;
+        }
+
+        .listCard li {
+            display: grid;
+            grid-template-columns: 100px repeat(3, 1fr);
+            color: #000000;
+            row-gap: 20px;
+        }
+
+        .listCard li div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .listCard li img {
+            width: 90%;
+        }
+
+        .listCard li button {
+            background-color: #fff5;
+            border: none;
+            cursor: pointer;
+        }
+
+        .listCard .count {
+            margin: 0 20px;
+        }
+
+        .shopping {
+            cursor: pointer;
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+        .shopping:hover{
+            transform: translateY(-6px);
+        }
+        .line {
+      width: 80%;
+      height: 4px;
+      background-color: #ffffff;
+      margin: 25px auto;
+      border: 0;
+      border-radius: 20px;
+    }
+    </style>
+</head>
+
+<body class="">
+
+
+    <div class="container">
+        <header>
+            <div class="navbar">
+                <a href="index.html"><img
+                        src="https://static.vecteezy.com/system/resources/thumbnails/016/329/811/small/3d-illustration-gift-box-new-year-png.png"
+                        class="logo"></a>
+                <h1 style="margin: 0;">Shopping Cart</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href=""></a></li>
+                    </ul>
+                </nav>
+                <div class="shopping">
+                    <img src="image/shopping.svg">
+                    <span class="quantity">0</span>
+                </div>
+            </div>
+        </header>
+       <div class="line"></div>
+
+        <div class="list_container">
+            <div class="list">
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <h1>Cart</h1>
+        <ul class="listCard">
+        </ul>
+        <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping">Close</div>
+        </div>
+    </div>
+
+    <script>
+        let openShopping = document.querySelector('.shopping');
+        let closeShopping = document.querySelector('.closeShopping');
+        let list = document.querySelector('.list');
+        let listCard = document.querySelector('.listCard');
+        let body = document.querySelector('body');
+        let total = document.querySelector('.total');
+        let quantity = document.querySelector('.quantity');
+
+        openShopping.addEventListener('click', () => {
+            body.classList.add('active');
+        })
+        closeShopping.addEventListener('click', () => {
+            body.classList.remove('active');
+        })
+
+        let products = [
+            {
+                id: 1,
+                name: 'Toy Car',
+                image: '1.1.png',
+                price: 1299
+            },
+            {
+                id: 2,
+                name: 'Doll',
+                image: '2.1.png',
+                price: 499
+            },
+            {
+                id: 3,
+                name: 'Perfume',
+                image: '3.1.PNG',
+                price: 399
+            },
+            {
+                id: 4,
+                name: 'Puzzle',
+                image: '4.1.PNG',
+                price: 249
+            },
+            {
+                id: 5,
+                name: 'Coffee Mug',
+                image: '5.1.PNG',
+                price: 199
+            },
+            {
+                id: 6,
+                name: 'Personalized Photo Frame',
+                image: '6.1.PNG',
+                price: 449
+            }
+        ];
+        let listCards = [];
+        function initApp() {
+            products.forEach((value, key) => {
+                let newDiv = document.createElement('div');
+                newDiv.classList.add('item');
+                newDiv.innerHTML = `
+            <img src="image/${value.image}">
+            <div class="title">${value.name}</div>
+            <div class="price">${value.price.toLocaleString()}</div>
+            <button onclick="addToCard(${key})">Add To Cart</button>`;
+                list.appendChild(newDiv);
+            })
+        }
+        initApp();
+        function addToCard(key) {
+            if (listCards[key] == null) {
+                
+                listCards[key] = JSON.parse(JSON.stringify(products[key]));
+                listCards[key].quantity = 1;
+            }
+            reloadCard();
+        }
+        function reloadCard() {
+            listCard.innerHTML = '';
+            let count = 0;
+            let totalPrice = 0;
+            listCards.forEach((value, key) => {
+                totalPrice = totalPrice + value.price;
+                count = count + value.quantity;
+                if (value != null) {
+                    let newDiv = document.createElement('li');
+                    newDiv.innerHTML = `
+                <div><img src="image/${value.image}"/></div>
+                <div>${value.name}</div>
+                <div>${value.price.toLocaleString()}</div>
+                <div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
+                    <div class="count">${value.quantity}</div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+                </div>`;
+                    listCard.appendChild(newDiv);
+                }
+            })
+            total.innerText = totalPrice.toLocaleString();
+            quantity.innerText = count;
+        }
+        function changeQuantity(key, quantity) {
+            if (quantity == 0) {
+                delete listCards[key];
+            } else {
+                listCards[key].quantity = quantity;
+                listCards[key].price = quantity * products[key].price;
+            }
+            reloadCard();
+        }
+    </script>
+</body>
+
+</html>
